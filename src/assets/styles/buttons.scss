@@ -1,0 +1,20 @@
+
+
+.btn{
+   cursor: pointer;
+   min-width: 150px;
+   opacity: 0.95;
+   font-weight: bold;
+   border-radius: 26px;
+   font-size: 14px;
+   
+}
+
+.main-button{
+    background-color: $main-color;
+    color: $color-white;
+    height: 50px;
+    box-sizing: content-box;
+    font-size: 18px;
+    @extend .btn;
+}

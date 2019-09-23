@@ -42,7 +42,7 @@ class Register extends Component {
                                className="input"      onChange={this.handleChange} type="mail" />
                         <input className="input" value={this.state.password} placeholder="Password" name='password'
                                        onChange={this.handleChange} type="password" />
-                        <button type='button' onClick={this.handleClick}>
+                        <button className="main-button" type='button' onClick={this.handleClick}>
                             Registrarme
                         </button>
                     </form>
