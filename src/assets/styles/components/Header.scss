@@ -1,0 +1,16 @@
+@import '../Vars.scss';
+
+.header {
+    align-items: center;
+    background-image: linear-gradient(to right, $second-color ,$main-color);
+    color: white;
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    top: 0px;
+    width: 100%;
+    & > h1{
+        margin-left: 30px;
+    }
+  }
+  
