@@ -1,0 +1,82 @@
+@import "../extends.scss";
+@import "../Vars.scss";
+@import "../inputs.scss";
+@import "../buttons.scss";
+.login {
+  @extend .container-form;
+}
+
+.login-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 599px;
+  padding: 60px 68px 40px;
+}
+
+.container-social-network {
+  color: $color-white;
+}
+
+.contend-login-google {
+  background-color: $third-color;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  & img {
+    vertical-align: middle;
+    margin: 4px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.contend-login-facebook {
+  background-color: $fourth-color;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  & img {
+    vertical-align: middle;
+    margin: 4px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+.contend-login-twitter {
+  background-color: $fiveth-color;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  & img {
+    vertical-align: middle;
+    margin: 4px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-register {
+  font-size: 16px;
+  & a {
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: $color-black;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
