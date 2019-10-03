@@ -1,0 +1,39 @@
+@import "../Vars.scss";
+
+.container-routes {
+  background-color: $color-gainsboro;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  padding: 15px 30px 40px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+.routes-info {
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  justify-content: space-between;
+  padding: 0 30px 40px 15px;
+}
+.routes-info-datail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.info-origin-destintation {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  & img {
+    margin: 0 20px 0 20px;
+  }
+}
+.info-time-route {
+  font-size: 24px;
+  & img {
+    margin:  0px 20px -8px 20px;
+  }
+}

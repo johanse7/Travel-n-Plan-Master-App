@@ -1,9 +1,15 @@
 import React from 'react';
+import AirplaneRoutes from '../components/AirplaneRoutes';
 import '../assets/styles/TravelApp.scss';
 
 const Home = () => (
   <>
-    <h1>Home</h1>
+    <AirplaneRoutes />
+    <AirplaneRoutes />
+    <AirplaneRoutes />
+    <AirplaneRoutes />
+    <AirplaneRoutes />
+    <AirplaneRoutes />
   </>
 );
 
