@@ -16,10 +16,20 @@ const AirplaneRoutes = () => {
                 <h4>08 sep 2019</h4>
                 <div className="routes-info-datail">
                     <div className="info-time-route">
-
-                        <span>10:30</span>
-                        <img src={arrow} alt="Hora local" />
-                        <span> 22:10</span>
+                        <div>
+                            <h3>10:30</h3>
+                            <p>DEL</p>
+                            <p>Delhi</p>
+                           
+                        </div>
+                        <div>
+                            <img src={arrow} alt="Hora local" />
+                        </div>
+                        <div>
+                            <h3>22:30</h3>
+                            <p>JFK</p>
+                            <p>New-york</p>
+                        </div>
                     </div>
                     <span><b>Avianca</b></span>
                 </div>
