@@ -43,3 +43,20 @@
     margin: 0;
   }
 }
+.info-price{
+  &> p{
+    margin: 0;
+  }
+  & button{
+    margin-top: 15px;
+  }
+}
+
+.airline{
+  font-size: 16px;
+}
+
+.price{
+  font-size: 24px;
+  font-weight: 600;
+}

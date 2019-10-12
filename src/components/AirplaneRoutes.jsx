@@ -22,7 +22,6 @@ const AirplaneRoutes = (props) => {
                             <h3>{startHour}</h3>
                             <p>{origin.code}</p>
                             <p>{origin.cityName}</p>
-
                         </div>
                         <div>
                             <img src={arrow} alt="Hora local" />
@@ -33,7 +32,13 @@ const AirplaneRoutes = (props) => {
                             <p>{destination.cityName}</p>
                         </div>
                     </div>
-                    <span><b>{airLineName}</b></span>
+                    <div className="info-price">
+                        <p className="price">COP $2.500.000 </p>
+                        <p className="airline">{airLineName}</p>
+                        <button className="success-button">
+                            Comprar
+                     </button>
+                    </div>
                 </div>
             </div>
         </section>

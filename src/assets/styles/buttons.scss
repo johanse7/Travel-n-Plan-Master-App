@@ -19,3 +19,16 @@
     background-color: $second-color;
   }
 }
+
+.success-button{
+  background-color: $seventh-color ;
+  color: $color-white;
+  height: 45px;
+  width: 180px;
+  box-sizing: content-box;
+  font-size: 18px;
+  @extend .btn;
+  &:hover {
+    background-color:$sixth--color ;
+  }
+}
