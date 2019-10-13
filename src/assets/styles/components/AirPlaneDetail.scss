@@ -1,0 +1,28 @@
+.container-detail {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.container-detail-item {
+  display: flex;
+  & img {
+    margin-right: 15px;
+  }
+
+}
+.container-detail-info{
+    &>p{
+        margin: 0;
+    }
+}
+
+.info-place{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.info-place-detail{
+    font-size: 12px;
+    font-weight: 300
+}

@@ -1,10 +1,11 @@
 import React from 'react';
 import '../assets/styles/components/AirplaneRoutes.scss';
+import { Link } from 'react-router-dom';
 import planeIcon from '../assets/static/plane.png';
 import arrow from '../assets/static/arrow.png';
 
-const AirplaneRoutes = (props) => {
-    const { airLineName, startDate, startHour, endHour, origin, destination } = props;
+const AirplaneRoutes = props => {
+    const { id, airLineName, startDate, startHour, endHour, origin, destination } = props;
 
     return (
         <section className="container-routes">
@@ -35,9 +36,13 @@ const AirplaneRoutes = (props) => {
                     <div className="info-price">
                         <p className="price">COP $2.500.000 </p>
                         <p className="airline">{airLineName}</p>
-                        <button className="success-button">
-                            Comprar
-                     </button>
+                        <Link to={`/buyAirplane/${id}`}>
+                            <button
+                                className="success-button">
+                                Comprar
+                        </button>
+                        </Link>
+
                     </div>
                 </div>
             </div>

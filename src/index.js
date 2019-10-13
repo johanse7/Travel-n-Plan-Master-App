@@ -9,6 +9,9 @@ const intialState = {
   "user": {
     "name": ""
   },
+  "airRouteSelected":{
+
+  },
   "airRoutes": [
     {
       "id":1,
@@ -19,12 +22,14 @@ const intialState = {
       "origin": {
         "cityName": "London",
         "countryName": "England",
-        "code": "Lon"
+        "code": "Lon",
+        "airportName":"Lodon Airport"
       },
       "destination": {
        "cityName": "New tork",
         "countryName": "EEUU",
-        "code": "JFK"
+        "code": "JFK",
+        "airportName":"New York Airport"
       }
 
     },
@@ -37,23 +42,27 @@ const intialState = {
       "origin": {
         "cityName": "Bogota",
         "countryName": "Colombia",
-        "code": "BOG"
+        "code": "BOG",
+        "airportName":"Aeropuerto Internacional El Dorado"
       },
       "destination": {
         "cityName": "Cali",
         "countryName": "Colombia",
-        "code": "CAL"
+        "code": "CAL",
+        "airportName":"Aeropuerto de Cali"
       }
 
     }
 
   ]
 };
-const store = createStore(reducer, intialState);
+const store = createStore(reducer,
+                          intialState,  
+                          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
-    <TravelApp />
+    <TravelApp /> 
   </Provider>,
   document.getElementById('TravelMasterApp')
 );
