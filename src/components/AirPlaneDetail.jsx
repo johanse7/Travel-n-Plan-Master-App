@@ -13,7 +13,7 @@ const AirPlaneDetail = ({startDate, origin, destination}) => (
                 {origin &&(
                 <div className="container-detail-info">
                     <p className="info-place">{origin.cityName}</p>
-                    <p className="info-place-detail">{origin.airportName}</p>
+                    <p className="info-place-detail">{`${origin.airportName} (${origin.code})`}</p>
                 </div >
                 )}
             </div>
@@ -24,7 +24,7 @@ const AirPlaneDetail = ({startDate, origin, destination}) => (
                 {destination &&(
                 <div className="container-detail-info">
                     <p className="info-place">{destination.cityName}</p>
-                    <p className="info-place-detail">{destination.airportName}</p>
+                    <p className="info-place-detail">{`${destination.airportName} (${destination.code})`}</p>
                 </div >
                 )}
             </div>

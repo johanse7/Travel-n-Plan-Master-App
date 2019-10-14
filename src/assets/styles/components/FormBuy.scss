@@ -1,0 +1,32 @@
+@import '../Vars.scss';
+
+.container-formBuy {
+  display: flex;
+  margin: 20px 0 10px 30px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.container-selection {
+  display: flex;
+}
+.counter-selection {
+  display: flex;
+}
+
+.counter-selection-img {
+  & > img {
+    cursor: pointer;
+  }
+}
+
+.counter {
+    background-color: #808080;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin: 0 20px 0 20px;
+    font-size: 28px;
+    text-align: center;
+}

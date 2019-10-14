@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRouteSelected } from '../actions/index';
 import AirPlaneDetail from '../components/AirPlaneDetail';
+import FormBuy from '../components/FormBuy';
+import '../assets/styles/components/BuyAirplane.scss';
 
 const BuyAirplane = props => {
 
@@ -12,7 +14,11 @@ const BuyAirplane = props => {
     }, []);
 
     return (
-        <AirPlaneDetail {...props.airRouteSelected} />
+        <section className="container-Buy">
+            <AirPlaneDetail {...props.airRouteSelected} />
+            <FormBuy />
+        </section>
+
     );
 };
 
