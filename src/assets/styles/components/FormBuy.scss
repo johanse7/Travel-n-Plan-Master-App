@@ -1,28 +1,30 @@
 @import '../Vars.scss';
+@import "../buttons.scss";
 
 .container-formBuy {
   display: flex;
-  margin: 20px 0 10px 30px;
   flex-direction: column;
   align-items: stretch;
 }
 
 .container-selection {
   display: flex;
+  justify-content: flex-end;
+  & span{
+    margin-top: 6px;
+  }
 }
 .counter-selection {
   display: flex;
 }
 
-.counter-selection-img {
-  & > img {
-    cursor: pointer;
-  }
+.counter-selection {
+ margin: 10px;
 }
 
 .counter {
-    background-color: #808080;
-    color: #ffffff;
+    background-color: $main-color;
+    color: $color-white;
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -30,3 +32,4 @@
     font-size: 28px;
     text-align: center;
 }
+

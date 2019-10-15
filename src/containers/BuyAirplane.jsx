@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getRouteSelected } from '../actions/index';
 import AirPlaneDetail from '../components/AirPlaneDetail';
 import FormBuy from '../components/FormBuy';
+import SummaryBuy from '../components/SummaryBuy';
 import '../assets/styles/components/BuyAirplane.scss';
 
 const BuyAirplane = props => {
@@ -15,8 +16,13 @@ const BuyAirplane = props => {
 
     return (
         <section className="container-Buy">
-            <AirPlaneDetail {...props.airRouteSelected} />
-            <FormBuy />
+            <div className="buy-detail">
+                <AirPlaneDetail {...props.airRouteSelected} />
+                <div className="section-FormBuy">
+                    <FormBuy />
+                </div>
+            </div>
+            <SummaryBuy />
         </section>
 
     );

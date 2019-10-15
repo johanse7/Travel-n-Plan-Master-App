@@ -3,7 +3,12 @@ const reducer = (state, action) => {
         case 'GET_ROUTE_SELECTED':
             return {
                 ...state,
-                airRouteSelected: state.airRoutes.find(item=>item.id === Number(action.payload)) || {}
+                airRouteSelected: state.airRoutes.find(item => item.id === Number(action.payload)) || {}
+            };
+        case 'SET_BUY_ROUTE':
+            return {
+                ...state,
+                buyAirRoute: { ...action.payload }
             };
         default:
             return state;

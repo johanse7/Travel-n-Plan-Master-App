@@ -9,47 +9,52 @@ const intialState = {
   "user": {
     "name": ""
   },
-  "airRouteSelected":{
+  "airRouteSelected": {
 
+  },
+  "buyAirRoute": {
+    
   },
   "airRoutes": [
     {
-      "id":1,
+      "id": 1,
       "startDate": "08 sep 2019",
       "startHour": "10:30",
       "endHour": "12:00",
-      "airLineName":"Viva Colombia",
+      "price": 1500000,
+      "airLineName": "Viva Colombia",
       "origin": {
         "cityName": "London",
         "countryName": "England",
         "code": "Lon",
-        "airportName":"Lodon Airport"
+        "airportName": "Lodon Airport"
       },
       "destination": {
-       "cityName": "New tork",
+        "cityName": "New tork",
         "countryName": "EEUU",
         "code": "JFK",
-        "airportName":"New York Airport"
+        "airportName": "New York Airport"
       }
 
     },
-     {
-      "id":2,
+    {
+      "id": 2,
       "startDate": "09 sep 2019",
       "startHour": "05:00",
-      "endHour": "07:00", 
-      "airLineName":"Latam",
+      "endHour": "07:00",
+      "airLineName": "Latam",
+      "price": 2600000,
       "origin": {
         "cityName": "Bogota",
         "countryName": "Colombia",
         "code": "BOG",
-        "airportName":"Aeropuerto Internacional El Dorado"
+        "airportName": "Aeropuerto Internacional El Dorado"
       },
       "destination": {
         "cityName": "Cali",
         "countryName": "Colombia",
         "code": "CAL",
-        "airportName":"Aeropuerto de Cali"
+        "airportName": "Aeropuerto de Cali"
       }
 
     }
@@ -57,12 +62,12 @@ const intialState = {
   ]
 };
 const store = createStore(reducer,
-                          intialState,  
-                          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+  intialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
-    <TravelApp /> 
+    <TravelApp />
   </Provider>,
   document.getElementById('TravelMasterApp')
 );

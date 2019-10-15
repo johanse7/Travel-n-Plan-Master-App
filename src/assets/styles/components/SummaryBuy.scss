@@ -1,0 +1,33 @@
+@import '../Vars.scss';
+
+.container-summary{
+  border: 2px solid $color-gainsboro;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 40px;
+  width: 300px;
+  height: 450px;
+  margin: 30px;
+  align-items: center;
+}
+
+.summary-count-passangers{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.summary-total-price{
+    margin: 15px;
+    & p{
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+.summary-date{
+    font-size: 16px;
+    & img{
+        margin-right: 5px;;
+    }
+}

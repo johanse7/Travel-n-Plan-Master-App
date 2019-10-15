@@ -8,12 +8,22 @@
   outline: none;
 }
 
+.sm-btn {
+  cursor: pointer;
+  min-width: 120px;
+  opacity: 0.95;
+  font-weight: bold;
+  border-radius: 26px;
+  border: none;
+  outline: none;
+}
+
 .main-button {
   background-color: $main-color;
   color: $color-white;
   height: 50px;
   box-sizing: content-box;
-  font-size: 18px;
+  font-size: 16px;
   @extend .btn;
   &:hover {
     background-color: $second-color;
@@ -26,9 +36,23 @@
   height: 45px;
   width: 180px;
   box-sizing: content-box;
-  font-size: 18px;
+  font-size: 16px;
   @extend .btn;
   &:hover {
     background-color:$sixth--color ;
   }
 }
+
+.warning-button{
+  background-color: $eigth-color ;
+  color: $color-white;
+  height: 45px;
+  width: 180px;
+  box-sizing: content-box;
+  font-size: 16px;
+  @extend .btn;
+  &:hover {
+    background-color:$nineth-color;
+  }
+}
+

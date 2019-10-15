@@ -1,4 +1,23 @@
+@import '../Vars.scss';
+
 .container-Buy {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.buy-detail{
+  display: flex;
   flex-direction: column;
+}
+.section-FormBuy{
+  border: 2px solid $color-gainsboro;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 20px 40px;
+  width: 600px;
+  margin: 30px;
 }
