@@ -5,7 +5,7 @@ import '../assets/styles/components/SummaryBuy.scss';
 
 const SummaryBuy = (props) => {
 
-    const { buyAirRoute , airRouteSelected } = props;
+    const { buyAirRoute, airRouteSelected } = props;
     const hasMoreThanOne = buyAirRoute.totalPassenger > 1;
     const calcTotalPrice = () => {
         return buyAirRoute.totalPassenger * airRouteSelected.price;
@@ -22,7 +22,7 @@ const SummaryBuy = (props) => {
                 {airRouteSelected.startDate}
            </div>
             <div className="summary-total-price">
-                <p> {`Total: COP $${calcTotalPrice()}`}</p>
+                <p> {`Total: COP $  ${calcTotalPrice()}`}</p>
             </div>
             <button type="button"
                 className="success-button"

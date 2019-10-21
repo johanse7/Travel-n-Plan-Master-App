@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IoIosAdd, IoIosRemoveCircle } from "react-icons/io";
+import FlightScale from '../components/FlightScale';
 import { setBuyRoute } from '../actions/index';
 import '../assets/styles/components/FormBuy.scss';
 
@@ -34,7 +35,7 @@ const FormBuy = (props) => {
                 <div className="counter">{form.totalPassenger}</div>
             </div>
             <h3>Diligencia tu compra</h3>
-            <div >
+            <div>
                 <div className="counter-selection">
                     <div className="counter-selection">
 
@@ -58,6 +59,8 @@ const FormBuy = (props) => {
                     </div>
                 </div>
             </div>
+            <FlightScale/>
+            
         </div>
     )
 };
