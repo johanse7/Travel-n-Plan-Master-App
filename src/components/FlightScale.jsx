@@ -3,6 +3,8 @@ import { FaLongArrowAltDown } from 'react-icons/fa';
 import '../assets/styles/components/FlightScale.scss';
 
 const FlightScale = props => {
+
+  const {fligthScalesId, duration, startHour, endHour, typeScale, codeScale, categories } = props;
   const classNameSlected = "flight-scale-selected";
   const [classFligh, setClassFligh] = useState({
     classSelected: {},
@@ -10,40 +12,35 @@ const FlightScale = props => {
 
   const handleClickClassSelected = (name) => {
     debugger
-
-      setClassFligh({
-        ...classFligh,
-        classSelected:{
-          [name]: classNameSlected
-        }
-      })
+    setClassFligh({
+      ...classFligh,
+      classSelected: {
+        [name]: classNameSlected
+      }
+    })
   };
 
   return (
     <section className="Flight-Scale-container">
       <div className="Flight-Scale-type">
         <FaLongArrowAltDown />
-        <span>Directo</span>
+        <span>{typeScale}</span>
       </div>
-      <div className={`Flight-Scale ${classFligh.classSelected["Directo1"] || ""}`}
-           onClick={()=>handleClickClassSelected("Directo1")}
-      >
-        <span>Economico</span>
-        <div className="Flight-Scale-price">
-          <span>COP</span>
-          <span>$454545</span>
-        </div>
-      </div>
-      <div  className={`Flight-Scale ${classFligh.classSelected["Directo2"] || "" }`}
-           onClick={()=>handleClickClassSelected("Directo2")}
-       >
-        <span>Ejecutivo</span>
-        <div className="Flight-Scale-price">
-          <span>COP</span>
-          <span>$454545</span>
-        </div>
+      {categories.length > 0 &&
+        categories.map(item => (
+          <div key={`categories${item.categoriesId}`} 
+               className={`Flight-Scale ${classFligh.classSelected[`category${fligthScalesId}${item.categoriesId}`] || ""}`}
+               onClick={() => handleClickClassSelected(`category${fligthScalesId}${item.categoriesId}`)}
+          >
+            <span>{item.name}</span>
+            <div className="Flight-Scale-price">
+              <span>COP</span>
+              <span>${item.price}</span>
+            </div>
 
-      </div>
+          </div>
+        ))
+      }
     </section>
   );
 };

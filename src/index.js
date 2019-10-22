@@ -34,7 +34,29 @@ const intialState = {
         "countryName": "EEUU",
         "code": "JFK",
         "airportName": "New York Airport"
-      }
+      },
+      "fligthScales":[
+        {
+          "fligthScalesId": 1,
+          "duration":"3h4m",
+          "startHour":"12:00",
+          "endHour":"15:00",
+          "typeScale":"Directo",
+          "codeScale" :"01",
+          "categories":[
+            {
+              "categoriesId":1,
+              "name": "Economico",
+              "price": 600000,
+            },
+            {
+              "categoriesId":2,
+              "name": "Ejecutivo",
+              "price": 800000,
+            }
+          ]
+        }
+      ],
 
     },
     {
@@ -55,7 +77,29 @@ const intialState = {
         "countryName": "Colombia",
         "code": "CAL",
         "airportName": "Aeropuerto de Cali"
-      }
+      },
+      "fligthScales":[
+        {
+          "fligthScalesId": 2,
+          "duration":"3h4m",
+          "startHour":"13:00",
+          "endHour":"18:00",
+          "typeScale":"Directo",
+          "codeScale" :"01",
+          "categories":[
+            {
+              "categoriesId":1,
+              "name": "Economico",
+              "price": 700,
+            },
+            {
+              "categoriesId":2,
+              "name": "Ejecutivo",
+              "price": 900,
+            }
+          ]
+        }
+      ],
 
     }
 

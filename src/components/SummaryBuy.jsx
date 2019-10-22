@@ -8,6 +8,7 @@ const SummaryBuy = (props) => {
     const { buyAirRoute, airRouteSelected } = props;
     const hasMoreThanOne = buyAirRoute.totalPassenger > 1;
     const calcTotalPrice = () => {
+        debugger
         return buyAirRoute.totalPassenger * airRouteSelected.price;
     };
     return (

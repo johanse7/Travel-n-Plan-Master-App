@@ -8,6 +8,9 @@ import '../assets/styles/components/FormBuy.scss';
 const MIN_PASSENGER = 1;
 
 const FormBuy = (props) => {
+
+    const {airRouteSelected} = props;
+
     const [form, setValues] = useState({
         totalPassenger: MIN_PASSENGER,
     });
@@ -59,14 +62,21 @@ const FormBuy = (props) => {
                     </div>
                 </div>
             </div>
-            <FlightScale/>
-            
+            {airRouteSelected.fligthScales && airRouteSelected.fligthScales.length > 0 &&
+             airRouteSelected.fligthScales.map(item=>(<FlightScale key={`flightScale${item.fligthScalesId}`} {...item} />))
+            } 
+
         </div>
     )
 };
+const mapSatateToProps = (state) => {
+    return {
+        airRouteSelected: state.airRouteSelected
+    };
+}
 
 const mapDispatchToProps = {
     setBuyRoute
 }
 
-export default connect(null, mapDispatchToProps)(FormBuy);
+export default connect(mapSatateToProps, mapDispatchToProps)(FormBuy);
