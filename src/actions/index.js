@@ -3,7 +3,12 @@ export const getRouteSelected = payload => ({
    payload
 });
 
-export const setBuyRoute = payload => ({
-   type: 'SET_BUY_ROUTE',
+export const setBuyAddPassangger = payload => ({
+   type: 'SET_BUY_ADD_PASSANGGER',
+   payload
+});
+
+export const setBuyFligthScale = payload => ({
+   type: 'SET_BUY_FLIGTH_SCALE',
    payload
 });

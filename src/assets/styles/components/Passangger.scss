@@ -1,0 +1,28 @@
+@import '../Vars.scss';
+@import "../buttons.scss";
+
+.container-selection {
+    display: flex;
+    justify-content: flex-end;
+    & span{
+      margin-top: 6px;
+    }
+  }
+  .counter-selection {
+    display: flex;
+  }
+  
+  .counter-selection {
+   margin: 10px;
+  }
+  
+  .counter {
+      background-color: $main-color;
+      color: $color-white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      margin: 0 20px 0 20px;
+      font-size: 28px;
+      text-align: center;
+  }

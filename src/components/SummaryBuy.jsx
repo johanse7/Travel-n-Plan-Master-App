@@ -6,10 +6,10 @@ import '../assets/styles/components/SummaryBuy.scss';
 const SummaryBuy = (props) => {
 
     const { buyAirRoute, airRouteSelected } = props;
+    const { fligthScale } = buyAirRoute;
     const hasMoreThanOne = buyAirRoute.totalPassenger > 1;
     const calcTotalPrice = () => {
-        debugger
-        return buyAirRoute.totalPassenger * airRouteSelected.price;
+        return buyAirRoute.totalPassenger * fligthScale.category.price;
     };
     return (
         <section className="container-summary">
@@ -17,14 +17,23 @@ const SummaryBuy = (props) => {
             <p className="summary-count-passangers">
 
                 {`${buyAirRoute.totalPassenger}  ${hasMoreThanOne ? 'Pasajeros' : 'Pasajero'}`}
+
             </p>
+
             <div className="summary-date">
                 <img src={smallAirPlane} alt="origen" />
                 {airRouteSelected.startDate}
-           </div>
-            <div className="summary-total-price">
-                <p> {`Total: COP $  ${calcTotalPrice()}`}</p>
             </div>
+
+            {fligthScale &&
+                <>
+                    <span> {buyAirRoute.fligthScale.duration} {fligthScale.category.name}</span>
+                    <div className="summary-total-price">
+                        <p> {`Total: COP $  ${calcTotalPrice()}`}</p>
+                    </div>
+                </>
+            }
+
             <button type="button"
                 className="success-button"
             >

@@ -26,7 +26,7 @@
     font-weight: 400;
   }
 }
-.flight-scale-selected{
+.flight-scale-selected {
   background-color: #333d42;
   color: $color-white;
 }
@@ -47,8 +47,30 @@
   font-size: 14px;
   font-weight: 600;
   margin-top: 10px;
+  display: flex;
   & > svg {
     font-size: 35px;
     vertical-align: top;
   }
+}
+.Flight-Scale-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.info-time-fligth {
+  display: flex;
+  color: $color-gray;
+  font-size: 20px;
+}
+
+.info-duration {
+  color: $color-gray;
+  font-size: 14px;
+}
+
+.info-duration-text {
+  font-size: 18px;
+  color: $color-black;
+  margin-left: 5px;;
 }

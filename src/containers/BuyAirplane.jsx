@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRouteSelected } from '../actions/index';
 import AirPlaneDetail from '../components/AirPlaneDetail';
-import FormBuy from '../components/FormBuy';
+import FormBuy from './FormBuy';
 import SummaryBuy from '../components/SummaryBuy';
 import '../assets/styles/components/BuyAirplane.scss';
 

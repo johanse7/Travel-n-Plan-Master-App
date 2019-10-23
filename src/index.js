@@ -55,6 +55,26 @@ const intialState = {
               "price": 800000,
             }
           ]
+        },
+        {
+          "fligthScalesId": 2,
+          "duration":"4h10m",
+          "startHour":"12:00",
+          "endHour":"01:00",
+          "typeScale":"Directo",
+          "codeScale" :"01",
+          "categories":[
+            {
+              "categoriesId":1,
+              "name": "Economico",
+              "price": 10,
+            },
+            {
+              "categoriesId":2,
+              "name": "Ejecutivo",
+              "price": 50,
+            }
+          ]
         }
       ],
 
@@ -73,9 +93,9 @@ const intialState = {
         "airportName": "Aeropuerto Internacional El Dorado"
       },
       "destination": {
-        "cityName": "Cali",
+        "cityName": "Medellin",
         "countryName": "Colombia",
-        "code": "CAL",
+        "code": "MED",
         "airportName": "Aeropuerto de Cali"
       },
       "fligthScales":[
