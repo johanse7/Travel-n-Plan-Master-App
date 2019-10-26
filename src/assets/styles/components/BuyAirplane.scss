@@ -3,7 +3,7 @@
 .container-Buy {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .buy-detail{
@@ -20,4 +20,5 @@
   padding: 20px 20px 40px;
   width: 600px;
   margin: 30px;
+
 }

@@ -15,16 +15,19 @@ const BuyAirplane = props => {
     }, []);
 
     return (
-        <section className="container-Buy">
-            <div className="buy-detail">
-                <AirPlaneDetail {...props.airRouteSelected} />
-                <div className="section-FormBuy">
-                    <FormBuy />
+        <>
+            <section className="container-Buy">
+                <div className="buy-detail">
+                    <AirPlaneDetail {...props.airRouteSelected} />
+                    <div className="section-FormBuy">
+                        <FormBuy />
+                    </div>
                 </div>
-            </div>
-            <SummaryBuy />
-        </section>
+             <SummaryBuy /> 
 
+            </section>
+
+        </>
     );
 };
 

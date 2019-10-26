@@ -62,6 +62,9 @@
   display: flex;
   color: $color-gray;
   font-size: 20px;
+  & img{
+    margin: 0 10px;
+  }
 }
 
 .info-duration {

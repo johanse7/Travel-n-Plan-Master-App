@@ -25,6 +25,8 @@ const reducer = (state, action) => {
                                                             action.payload.fligthScalesId)
                                                             .map(item=> ({
                                                                 duration :item.duration,
+                                                                startHour : item.startHour,
+                                                                endHour : item.endHour,
                                                                 category: item.categories.find(item =>item.categoriesId === action.payload.categoriesId)
                                                             }))[0]
                          //category: state.buyAirRoute.fligthScale.categories.map(item>item.categoriesId === action.payload.categoriesId)
