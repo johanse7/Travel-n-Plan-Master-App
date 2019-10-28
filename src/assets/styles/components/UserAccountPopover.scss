@@ -1,0 +1,84 @@
+@import "../Vars.scss";
+
+.popover-content {
+  position: absolute;
+  transform: translate(0, 10px);
+  background-color: #484848;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  width: 300px;
+  right: 0;
+  top: 0;
+  margin-top: 55px;
+  z-index: 10;
+  transform: translate(0, -10px);
+  border-radius: 10px;
+}
+.popover-content:before {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  right: calc(50% - 10px);
+  top: -8px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #484848 transparent;
+  transition-duration: 0.5s;
+  transition-property: transform;
+}
+.menu-content-user {
+  font-size: 14px;
+  margin: 20px 0 10px 0;
+  display: flex;
+  justify-content: space-around;
+  & div > p {
+    margin: 0;
+  }
+  & svg {
+    font-size: 35px;
+  }
+}
+.menu-content-account {
+  font-size: 22px;
+  & svg {
+    color: $main-color;
+    font-size: 40px;
+    vertical-align: middle;
+    margin-right: 50px;
+  }
+}
+.menu-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.animate-popover {
+  transform: translate(0, -20px);
+  transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.menu-content-options {
+  font-size: 15px;
+  & ul {
+    list-style: none;
+    & > li {
+      margin: 10px 0 5px 5px;
+      height: 30px;
+      padding-top: 8px;
+      & svg {
+        color: $color-gainsboro;
+        font-size: 18px;
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+      & span{
+        vertical-align: middle;
+      }
+    
+    }
+  }
+}
+
+.menu-content-options ul > li:hover{
+  cursor: pointer;
+  background-color: #696969;
+}

@@ -7,7 +7,7 @@ import TravelApp from './routes/TravelApp';
 
 const intialState = {
   "user": {
-    "name": ""
+    
   },
   "airRouteSelected": {
 
