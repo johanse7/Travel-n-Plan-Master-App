@@ -1,0 +1,17 @@
+.container-not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.container-not-found-message {
+  text-align: center;
+  & h1 {
+    font-size: 30px;
+  }
+  & p {
+    font-size: 22px;
+  
+  }
+}

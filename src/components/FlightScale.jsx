@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaLongArrowAltDown } from 'react-icons/fa';
+import { MdFlightLand } from "react-icons/md";
 import '../assets/styles/components/FlightScale.scss';
 import arrow from '../assets/static/arrow.png';
 
@@ -19,10 +20,21 @@ const FlightScale = props => {
   return (
     <section className="Flight-Scale-container">
       <div className="Flight-Scale-info">
-        <div className="Flight-Scale-type">
-          <FaLongArrowAltDown />
-          <span>{typeScale}</span>
-        </div>
+        {codeScale === '01' ?
+          (
+            <div className="Flight-Scale-type-directy">
+              <FaLongArrowAltDown />
+              <span>{typeScale}</span>
+            </div>
+
+          ) : (
+            <div className="Flight-Scale-type-stop">
+              <MdFlightLand />
+              <span>{typeScale}</span>
+            </div>
+
+          )}
+
         <div className="info-time-fligth">
           <span>{startHour}</span>
           <img src={arrow} alt="Hora local" />

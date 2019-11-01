@@ -1,0 +1,17 @@
+@import "../Vars.scss";
+@import "../buttons.scss";
+
+.modal-buy-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-message {
+  color: $color-Dark;
+  font-size: 14px;
+}
+.modal-footer{
+  margin-top: 15px;
+  width: 40vh;
+}

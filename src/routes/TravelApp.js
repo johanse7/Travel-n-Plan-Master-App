@@ -4,6 +4,7 @@ import Home from '../containers/Home';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 import BuyAirplane from '../containers/BuyAirplane';
+import NotFound from '../components/NotFound';
 import Layout from '../components/Layout';
 
 const TravelApp = () => (
@@ -14,6 +15,7 @@ const TravelApp = () => (
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/buyAirplane/:id" component={BuyAirplane} />
+                <Route  component={NotFound} />
             </Switch>
         </Layout>
     </BrowserRouter>

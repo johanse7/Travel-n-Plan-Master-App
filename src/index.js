@@ -7,7 +7,7 @@ import TravelApp from './routes/TravelApp';
 
 const intialState = {
   "user": {
-    
+    "name": "johanse"
   },
   "airRouteSelected": {
 
@@ -30,7 +30,7 @@ const intialState = {
         "airportName": "Lodon Airport"
       },
       "destination": {
-        "cityName": "New tork",
+        "cityName": "New York",
         "countryName": "EEUU",
         "code": "JFK",
         "airportName": "New York Airport"
@@ -61,8 +61,8 @@ const intialState = {
           "duration":"4h10m",
           "startHour":"12:00",
           "endHour":"01:00",
-          "typeScale":"Directo",
-          "codeScale" :"01",
+          "typeScale":"parada",
+          "codeScale" :"02",
           "categories":[
             {
               "categoriesId":1,

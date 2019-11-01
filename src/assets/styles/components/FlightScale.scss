@@ -42,8 +42,19 @@
   font-weight: 700;
 }
 
-.Flight-Scale-type {
+.Flight-Scale-type-directy {
   color: $second-color;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  display: flex;
+  & > svg {
+    font-size: 35px;
+    vertical-align: top;
+  }
+}
+.Flight-Scale-type-stop{
+  color:  $eigth-color;
   font-size: 14px;
   font-weight: 600;
   margin-top: 10px;
