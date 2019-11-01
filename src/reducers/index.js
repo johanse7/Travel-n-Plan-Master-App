@@ -36,6 +36,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+      case "FetchData":
+        console.log(action.data)
+        return { ...state, data: action.data }
+    case "ERROR":
+        return { ...state, error: action.msg }
     default:
       return state;
   }

@@ -22,3 +22,18 @@ export const logoutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
   payload,
 });
+
+
+// asynchronous action creator
+export const fetchData = () => {
+
+  return (dispatch) => {
+      return fetch('https://jsonmock.hackerrank.com/api/movies/search/?Title=waterworld')
+          .then(response => response.json())
+          .then(json => dispatch(
+              { type: "FetchData", data: json }))
+          .catch(err => dispatch(
+              { type: "ERROR",msg: "Unable to fetch data" }))
+  }
+
+}

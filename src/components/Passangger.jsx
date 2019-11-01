@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IoIosAdd, IoIosRemoveCircle } from 'react-icons/io';
-import { setBuyAddPassangger } from '../actions/index';
+import { setBuyAddPassangger,fetchData } from '../actions/index';
 import '../assets/styles/components/Passangger.scss';
 
 const MIN_PASSENGER = 1;
@@ -13,6 +13,7 @@ const Passangger = props => {
     });
     useEffect(() => {
         props.setBuyAddPassangger(form);
+        props.fetchData();
     });
     const handleClickAdd = () => {
         setValues({
@@ -60,7 +61,8 @@ const Passangger = props => {
 };
 
 const mapDispatchToProps = {
-    setBuyAddPassangger
+    setBuyAddPassangger,
+    fetchData
 }
 
 export default connect(null, mapDispatchToProps)(Passangger); 

@@ -3,8 +3,6 @@ import ContentFlightScale from './ContentFlightScale';
 import Passangger from '../components/Passangger'; 
 import '../assets/styles/components/FormBuy.scss';
 
-
-
 const FormBuy = (props) => {
     return (
         <div className="container-formBuy">
@@ -13,6 +11,5 @@ const FormBuy = (props) => {
         </div>
     )
 };
-
 
 export default FormBuy;
