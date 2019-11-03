@@ -1,3 +1,15 @@
+const URL = 'https://travelmasterplan-api.now.sh';
+
+export const asyncGetAirlineFlights = () => {
+  return (dispatch) => {
+    dispatch({ type: 'PENDING_AIRLINE_FLIGHT' });
+    return fetch(`${URL}/api/airlineFlight`)
+      .then((response) => response.json())
+      .then((dataAirlineFlights) => dispatch({ type: 'GET_AIRLINE_FLIGHTS', payload: dataAirlineFlights.data }))
+      .catch((error) => dispatch({ type: 'EROR_GET_AIRLINE_FLIGHTS', msg: error }));
+  };
+};
+
 export const getRouteSelected = (payload) => ({
   type: 'GET_ROUTE_SELECTED',
   payload,
@@ -23,17 +35,3 @@ export const logoutRequest = (payload) => ({
   payload,
 });
 
-
-// asynchronous action creator
-export const fetchData = () => {
-
-  return (dispatch) => {
-      return fetch('https://jsonmock.hackerrank.com/api/movies/search/?Title=waterworld')
-          .then(response => response.json())
-          .then(json => dispatch(
-              { type: "FetchData", data: json }))
-          .catch(err => dispatch(
-              { type: "ERROR",msg: "Unable to fetch data" }))
-  }
-
-}

@@ -8,36 +8,36 @@ import '../assets/styles/components/BuyAirplane.scss';
 
 const BuyAirplane = props => {
 
-    const { id } = props.match.params;
+  const { id } = props.match.params;
 
-    useEffect(() => {
-        props.getRouteSelected(id);
-    }, []);
+  useEffect(() => {
+    props.getRouteSelected(id);
+  }, []);
 
-    return (
-        <>
-            <section className="container-Buy">
-                <div className="buy-detail">
-                    <AirPlaneDetail {...props.airRouteSelected} />
-                    <div className="section-FormBuy">
-                        <FormBuy />
-                    </div>
-                </div>
-             <SummaryBuy /> 
+  return (
+    <>
+      <section className="container-Buy">
+        <div className="buy-detail">
+          <AirPlaneDetail {...props.airRouteSelected} />
+          <div className="section-FormBuy">
+            <FormBuy />
+          </div>
+        </div>
+        <SummaryBuy />
 
-            </section>
+      </section>
 
-        </>
-    );
+    </>
+  );
 };
 
 const mapSatateToProps = (state) => {
-    return {
-        airRouteSelected: state.airRouteSelected,
-    };
+  return {
+    airRouteSelected: state.airRouteSelected,
+  };
 };
 const mapDispatchToProps = {
-    getRouteSelected
+  getRouteSelected
 }
 
 export default connect(mapSatateToProps, mapDispatchToProps)(BuyAirplane);

@@ -1,9 +1,36 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'GET_ROUTE_SELECTED':
+    case 'PENDING_AIRLINE_FLIGHT':
       return {
         ...state,
-        airRouteSelected: state.airRoutes.find((item) => item.id === Number(action.payload)) || {},
+        airLineFilgth: {
+          ...state.airLineFilgth,
+          pending: true,
+        },
+      };
+    case 'GET_AIRLINE_FLIGHTS':
+      return {
+        ...state,
+        airLineFilgth: {
+          ...state.airLineFilgth,
+          pending: false,
+          airRoutes: action.payload,
+        },
+      };
+    case 'EROR_GET_AIRLINE_FLIGHTS':
+      return {
+        ...state,
+        airLineFilgth: {
+          ...state.airLineFilgth,
+          pending: false,
+          error: action.msg,
+        },
+      };
+    case 'GET_ROUTE_SELECTED':
+      debugger
+      return {
+        ...state,
+        airRouteSelected: state.airLineFilgth.airRoutes.find((item) => item._id === action.payload) || {},
       };
     case 'SET_BUY_ADD_PASSANGGER':
       return {
@@ -36,11 +63,6 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
-      case "FetchData":
-        console.log(action.data)
-        return { ...state, data: action.data }
-    case "ERROR":
-        return { ...state, error: action.msg }
     default:
       return state;
   }
