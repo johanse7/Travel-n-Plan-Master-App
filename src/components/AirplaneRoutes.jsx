@@ -11,9 +11,7 @@ const AirplaneRoutes = (props) => {
     <section className="container-routes">
       <div className="info-origin-destintation">
         <span>
-          {origin.cityName}
-          ,
-         {origin.countryName}
+          {origin.cityName}, {origin.countryName}
           {' '}
         </span>
         <img src={planeIcon} alt="plane" />

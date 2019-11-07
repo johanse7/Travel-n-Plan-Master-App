@@ -30,7 +30,8 @@ const reducer = (state, action) => {
       debugger
       return {
         ...state,
-        airRouteSelected: state.airLineFilgth.airRoutes.find((item) => item._id === action.payload) || {},
+        airRouteSelected: !state.airLineFilgth.airRoutes ? {} :
+          state.airLineFilgth.airRoutes.find((item) => item._id === action.payload) || {},
       };
     case 'SET_BUY_ADD_PASSANGGER':
       return {

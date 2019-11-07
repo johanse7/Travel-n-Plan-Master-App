@@ -73,7 +73,7 @@ const SummaryBuy = (props) => {
 
         )}
       {stateSumary.openModalBuy &&
-        <ModalBuy />}
+        <ModalBuy {...airRouteSelected} />}
     </section>
   );
 };

@@ -1,0 +1,75 @@
+@import "../Vars.scss";
+
+.fligth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 60vw;
+  padding: 0 0 40px;
+  border-radius: 15px;
+  margin: 20px auto;
+  border: solid 1px $color-gainsboro;
+}
+
+.fligth-header {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: $main-color;
+  width: 100%;
+  border-radius: 15px;
+  border-bottom-left-radius: unset;
+  border-bottom-right-radius: unset;
+  flex: 1;
+}
+
+.fligth-info {
+  font-size: 18px;
+  color: $color-white;
+  margin: 10px 30px;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+.fligth-icon-plane {
+  font-size: 18px;
+  color: $color-white;
+  font-size: 22px;
+  margin-top: 10px;
+  & svg {
+    margin: 10px 5px;
+  }
+}
+
+.fligth-body{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fligth-body-time{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+  color: $color-black;
+  font-size: 18px;
+}
+
+.fligth-body-info{
+   color: $color-gray;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 20px;
+}
+
+.fligth-body-info-detail {
+  font-size: 14px;
+  margin-top: 5px;
+  & > svg {
+    font-size: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
