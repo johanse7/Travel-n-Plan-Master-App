@@ -1,12 +1,15 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import ModalContainer from './ModalContainer';
 import '../assets/styles/components/ModalBuy.scss';
 
 const ModalBuy = (props) => {
-  const { origin, destination } = props;
+  const { origin, destination, history } = props;
+  const handleClickRedirect = () => {
+    history.push('/userFligth');
+  };
   return (
     <ModalContainer>
-      <span className="close">&times;</span>
       <section className="modal-buy-container">
         <h3>Gracias por tu compra</h3>
         <div className="modal-message">
@@ -16,8 +19,8 @@ const ModalBuy = (props) => {
           </p>
         </div>
         <div className="modal-footer">
-          <button className="main-button">
-            Tus vueloss
+          <button className="main-button" onClick={ handleClickRedirect }>
+            Mis Vuelos
           </button>
         </div>
       </section>
@@ -25,4 +28,4 @@ const ModalBuy = (props) => {
   );
 };
 
-export default ModalBuy;
+export default withRouter(ModalBuy);

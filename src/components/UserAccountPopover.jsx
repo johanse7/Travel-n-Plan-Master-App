@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaUserAlt, FaPlane } from 'react-icons/fa';
 import { GoGear } from 'react-icons/go';
 import { IoMdLogOut } from 'react-icons/io';
@@ -23,8 +24,10 @@ const UserAccountPopover = React.forwardRef((props, ref) => {
         <div className='menu-content-options'>
           <ul>
             <li>
-              <FaPlane />
-              <span>Tus vuelos</span>
+              <Link to="/userFligth">
+                <FaPlane />
+                <span>Vuelos Comprados</span>
+              </Link>
             </li>
             <li onClick={handleClickLogoutUser}>
               <IoMdLogOut />

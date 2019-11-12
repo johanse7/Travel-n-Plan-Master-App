@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FaUserAlt, FaAngleDown } from 'react-icons/fa';
 import UserAccountPopover from './UserAccountPopover';
 import { logoutRequest } from '../actions/index';
