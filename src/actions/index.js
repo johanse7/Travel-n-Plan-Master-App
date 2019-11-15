@@ -1,4 +1,5 @@
 import history from '../helpers/history';
+import axios from 'axios';
 
 const URL = 'https://travelmasterplan-api.now.sh';
 const URL_BACKEND = 'http://localhost:8000/';
@@ -96,12 +97,23 @@ export const loginUser = ({ email, password }, redirectUrl) => {
 export const registerBuy = (payload) => {
   return (dispatch) => {
     debugger
+
+    // axios({
+    //   url: `${URL_BACKEND}user-arirlineFligth`,
+    //   withCredentials: true,
+    //   method: "post",
+    //   data: payload
+    // }).then((data) => (dispatch(registerBuyRequest(data))))
+    //   .catch((error) => dispatch(setError(error)));
+
+
     fetch(`${URL_BACKEND}user-arirlineFligth`, {
-      method: 'POST',
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json;charset=UTF-8',
       },
       credentials: 'same-origin',
+      method: 'POST',
       body: JSON.stringify(payload),
     }).then((response) => response.json())
       .then((data) => (dispatch(registerBuyRequest(data))))
