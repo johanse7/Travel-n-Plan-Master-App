@@ -1,5 +1,4 @@
 import history from '../helpers/history';
-import axios from 'axios';
 
 const URL = 'https://travelmasterplan-api.now.sh';
 const URL_BACKEND = 'http://localhost:8000/';
