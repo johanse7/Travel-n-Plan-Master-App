@@ -81,7 +81,7 @@ const SummaryBuy = (props) => {
       {openModalBuy &&
         <ModalBuy {...airRouteSelected} />}
 
-      {/* <LoadSpinner /> */}
+    {/* <LoadSpinner />  */}
     </section>
   );
 };

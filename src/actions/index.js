@@ -46,10 +46,13 @@ export const registerBuyRequest = (payload) => ({
   type: 'REGISTER_BUY_REQUEST',
   payload,
 });
+export const setPendingFetch = () => ({
+  type: 'PENDING_AIRLINE_FLIGHT',
+});
 
 export const asyncGetAirlineFlights = () => {
   return (dispatch) => {
-    dispatch({ type: 'PENDING_AIRLINE_FLIGHT' });
+    dispatch(setPendingFetch());
     return fetch(`${URL}/api/airlineFlight`)
       .then((response) => response.json())
       .then((dataAirlineFlights) => dispatch({ type: 'GET_AIRLINE_FLIGHTS', payload: dataAirlineFlights.data }))
@@ -77,6 +80,7 @@ export const registerUser = (payload, redirectUrl) => {
 
 export const loginUser = ({ email, password }, redirectUrl) => {
   return (dispatch) => {
+    dispatch(setPendingFetch());
     fetch(`${URL_BACKEND}auth/sign-in`, {
       method: 'POST',
       headers: new Headers({

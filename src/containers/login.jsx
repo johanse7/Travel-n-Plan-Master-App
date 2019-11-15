@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import LoadSpinner from '../components/LoadSpinner';
+import AlertMessage from '../components/AlertMessage';
 import googleIcon from '../assets/static/Google.png';
 import twitterIcon from '../assets/static/twitter.png';
 import facebookIcon from '../assets/static/Facebook.png';
@@ -8,7 +10,7 @@ import { loginUser } from '../actions/index';
 import '../assets/styles/components/Login.scss';
 
 const Login = (props) => {
-  const { loginUser } = props;
+  const { loginUser, pending, error } = props;
   const [form, setValues] = useState({
     user: '',
     password: '',
@@ -76,15 +78,27 @@ const Login = (props) => {
                 Regístrate
               </Link>
             </p>
+            {error &&
+              <AlertMessage message="Credenciales invalidas" classTypeAlert="warning" />}
           </form>
         </section>
       </section>
+      {pending &&
+        <LoadSpinner />
+      }
+
     </section>
   );
 };
+
+const mapStateToProps = ({ pending, error }) => (
+  {
+    pending,
+    error
+  });
 
 const mapDispatchToProps = {
   loginUser,
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

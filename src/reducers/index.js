@@ -57,6 +57,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        pending: false,
+        error: null
       };
     case 'LOGOUT_REQUEST':
       return {
@@ -74,6 +76,12 @@ const reducer = (state = initialState, action) => {
         pending: false,
         openModalBuy: true,
         userRegisterBuy: action.payload,
+      };
+    case 'SET_ERROR_RESPONSE':
+      return {
+        ...state,
+        error: action.error,
+        pending: false,
       };
     default:
       return state;
