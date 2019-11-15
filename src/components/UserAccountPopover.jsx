@@ -6,7 +6,7 @@ import { IoMdLogOut } from 'react-icons/io';
 import '../assets/styles/components/UserAccountPopover.scss';
 
 const UserAccountPopover = React.forwardRef((props, ref) => {
-  const { handleClickLogoutUser } = props;
+  const { handleClickLogoutUser, name, email } = props;
   return (
     <section id='popoverAccount' className='popover-content' ref={ref}>
       <div className='menu-content'>
@@ -17,8 +17,8 @@ const UserAccountPopover = React.forwardRef((props, ref) => {
         <div className='menu-content-user'>
           <FaUserAlt />
           <div>
-            <p>johanse7</p>
-            <p>johanse7@gmail.com</p>
+            <p>{name}</p>
+            <p>{email}</p>
           </div>
         </div>
         <div className='menu-content-options'>

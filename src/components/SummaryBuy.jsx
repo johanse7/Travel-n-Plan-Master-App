@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaLongArrowAltRight } from 'react-icons/fa';
-import ModalBuy from "./ModalBuy";
+import ModalBuy from './ModalBuy';
+import LoadSpinner from '../components/LoadSpinner';
 import smallAirPlane from '../assets/static/small-black-plane.png';
+import { registerBuy } from '../actions/index';
 import '../assets/styles/components/SummaryBuy.scss';
 
 const SummaryBuy = (props) => {
 
-  const [stateSumary, setStateSumary] = useState({
-    openModalBuy: false,
-  });
-
-  const { buyAirRoute, airRouteSelected, user } = props;
+  const { buyAirRoute, airRouteSelected, user, registerBuy, openModalBuy } = props;
   const { fligthScale } = buyAirRoute;
   const hasMoreThanOne = buyAirRoute.totalPassenger > 1;
   const hasUser = Object.keys(user).length > 0;
@@ -22,12 +20,19 @@ const SummaryBuy = (props) => {
   };
 
   const handleClickBuy = () => {
-    setStateSumary({
-      openModalBuy: true,
-    });
+    const userAirlineFligth = {
+      userId: user.id,
+      origin: airRouteSelected.origin,
+      destination: airRouteSelected.destination,
+      category: fligthScale.category.name,
+      totalPassenger: buyAirRoute.totalPassenger,
+      totalPrice: calcTotalPrice(),
+    };
+    registerBuy(userAirlineFligth);
   };
   return (
     <section className="container-summary">
+
       <h2>Tu selección</h2>
       <p className="summary-count-passangers">
         {`${buyAirRoute.totalPassenger}  ${hasMoreThanOne ? 'Pasajeros' : 'Pasajero'}`}
@@ -63,6 +68,7 @@ const SummaryBuy = (props) => {
         >
           Comprar
         </button>
+
       ) :
         (
           <div className="sumary-link-login">
@@ -72,8 +78,10 @@ const SummaryBuy = (props) => {
           </div>
 
         )}
-      {stateSumary.openModalBuy &&
+      {openModalBuy &&
         <ModalBuy {...airRouteSelected} />}
+
+      {/* <LoadSpinner /> */}
     </section>
   );
 };
@@ -82,7 +90,13 @@ const mapSatateToProps = (state) => {
     buyAirRoute: state.buyAirRoute,
     airRouteSelected: state.airRouteSelected,
     user: state.user,
+    pending: state.pending,
+    openModalBuy: state.openModalBuy,
   };
 };
 
-export default connect(mapSatateToProps, null)(SummaryBuy);
+const mapDispatchToProps = {
+  registerBuy,
+};
+
+export default connect(mapSatateToProps, mapDispatchToProps)(SummaryBuy);

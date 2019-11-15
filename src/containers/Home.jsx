@@ -16,11 +16,11 @@ const Home = ({ airRoutes, pending, error, asyncGetAirlineFlights }) => {
     </>
   );
 };
-const mapSatateToProps = ({ airLineFilgth }) => {
+const mapSatateToProps = ({ airLineFilgths, pending, error }) => {
   return {
-    airRoutes: airLineFilgth.airRoutes,
-    pending: airLineFilgth.pending,
-    error: airLineFilgth.error,
+    airRoutes: airLineFilgths,
+    pending: pending,
+    error: error,
   };
 };
 const mapDispatchToProps = {

@@ -1,37 +1,36 @@
-const reducer = (state, action) => {
+const userStorage = localStorage.getItem('user');
+const user = userStorage ? JSON.parse(userStorage) : {};
+const initialState = {
+  user,
+  airRouteSelected: {},
+  buyAirRoute: {},
+  airLineFilgths: [],
+};
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'PENDING_AIRLINE_FLIGHT':
       return {
         ...state,
-        airLineFilgth: {
-          ...state.airLineFilgth,
-          pending: true,
-        },
+        pending: true,
       };
     case 'GET_AIRLINE_FLIGHTS':
       return {
         ...state,
-        airLineFilgth: {
-          ...state.airLineFilgth,
-          pending: false,
-          airRoutes: action.payload,
-        },
+        airLineFilgths: action.payload,
+        pending: false,
       };
     case 'EROR_GET_AIRLINE_FLIGHTS':
       return {
         ...state,
-        airLineFilgth: {
-          ...state.airLineFilgth,
-          pending: false,
-          error: action.msg,
-        },
+        error: action.msg,
+        pending: false,
       };
     case 'GET_ROUTE_SELECTED':
-      debugger
       return {
         ...state,
-        airRouteSelected: !state.airLineFilgth.airRoutes ? {} :
-          state.airLineFilgth.airRoutes.find((item) => item._id === action.payload) || {},
+        airRouteSelected: !state.airLineFilgths ? {} :
+          state.airLineFilgths.find((item) => item._id === action.payload) || {},
       };
     case 'SET_BUY_ADD_PASSANGGER':
       return {
@@ -63,6 +62,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case 'REGISTER_REQUEST':
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case 'REGISTER_BUY_REQUEST':
+      return {
+        ...state,
+        pending: false,
+        openModalBuy: true,
+        userRegisterBuy: action.payload,
       };
     default:
       return state;

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import googleIcon from '../assets/static/Google.png';
 import twitterIcon from '../assets/static/twitter.png';
 import facebookIcon from '../assets/static/Facebook.png';
-import { loginRequest } from '../actions/index';
+import { loginUser } from '../actions/index';
 import '../assets/styles/components/Login.scss';
 
 const Login = (props) => {
-  const { loginRequest } = props;
+  const { loginUser } = props;
   const [form, setValues] = useState({
     user: '',
     password: '',
@@ -21,9 +21,9 @@ const Login = (props) => {
     });
   };
 
-  const handleClickLogin = () => {
-    loginRequest(form);
-    props.history.goBack();
+  const handleClickLogin = (e) => {
+    e.preventDefault();
+    loginUser(form, '/');
   };
 
   return (
@@ -45,13 +45,14 @@ const Login = (props) => {
           </div>
         </section>
         <section>
-          <form className='login-form'>
+          <form className='login-form' onSubmit={handleClickLogin}>
             <input
-              type='text'
-              name='name'
-              placeholder='Usuario'
+              type='mail'
+              name='email'
+              placeholder='Email'
               className='input'
               onChange={handleChange}
+              required
             />
             <input
               type='password'
@@ -59,11 +60,12 @@ const Login = (props) => {
               placeholder='Contraseña'
               className='input'
               onChange={handleChange}
+              required
             />
             <button
-              onClick={handleClickLogin}
               className='main-button'
-              type='button'
+              type='submit'
+              required
             >
               Inicia sesión
             </button>
@@ -82,7 +84,7 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -1,14 +1,12 @@
-const URL = 'https://travelmasterplan-api.now.sh';
+import history from '../helpers/history';
 
-export const asyncGetAirlineFlights = () => {
-  return (dispatch) => {
-    dispatch({ type: 'PENDING_AIRLINE_FLIGHT' });
-    return fetch(`${URL}/api/airlineFlight`)
-      .then((response) => response.json())
-      .then((dataAirlineFlights) => dispatch({ type: 'GET_AIRLINE_FLIGHTS', payload: dataAirlineFlights.data }))
-      .catch((error) => dispatch({ type: 'EROR_GET_AIRLINE_FLIGHTS', msg: error }));
-  };
-};
+const URL = 'https://travelmasterplan-api.now.sh';
+const URL_BACKEND = 'http://localhost:8000/';
+
+export const setError = (error) => ({
+  type: 'SET_ERROR_RESPONSE',
+  error,
+});
 
 export const getRouteSelected = (payload) => ({
   type: 'GET_ROUTE_SELECTED',
@@ -30,8 +28,84 @@ export const loginRequest = (payload) => ({
   payload,
 });
 
-export const logoutRequest = (payload) => ({
-  type: 'LOGOUT_REQUEST',
+export const logoutRequest = (payload) => {
+  localStorage.removeItem('user');
+  return {
+    type: 'LOGOUT_REQUEST',
+    payload,
+  };
+};
+
+export const registerRequest = (payload) => ({
+  type: 'REGISTER_REQUEST',
   payload,
 });
+
+export const registerBuyRequest = (payload) => ({
+  type: 'REGISTER_BUY_REQUEST',
+  payload,
+});
+
+export const asyncGetAirlineFlights = () => {
+  return (dispatch) => {
+    dispatch({ type: 'PENDING_AIRLINE_FLIGHT' });
+    return fetch(`${URL}/api/airlineFlight`)
+      .then((response) => response.json())
+      .then((dataAirlineFlights) => dispatch({ type: 'GET_AIRLINE_FLIGHTS', payload: dataAirlineFlights.data }))
+      .catch((error) => dispatch({ type: 'EROR_GET_AIRLINE_FLIGHTS', msg: error }));
+  };
+};
+
+export const registerUser = (payload, redirectUrl) => {
+  return (dispatch) => {
+    fetch(`${URL_BACKEND}auth/sign-up`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      body: JSON.stringify(payload),
+    }).then((response) => response.json())
+      .then(({ data }) => dispatch(registerRequest(data)))
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const loginUser = ({ email, password }, redirectUrl) => {
+  return (dispatch) => {
+    fetch(`${URL_BACKEND}auth/sign-in`, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': `Basic ${btoa(`${email}:${password}`)}`,
+      }),
+    }).then((response) => response.json())
+      .then(({ user }) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        dispatch(loginRequest(user));
+      })
+      .then(() => {
+        history.push(redirectUrl);
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const registerBuy = (payload) => {
+  return (dispatch) => {
+    debugger
+    fetch(`${URL_BACKEND}user-arirlineFligth`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(payload),
+    }).then((response) => response.json())
+      .then((data) => (dispatch(registerBuyRequest(data))))
+      .catch((error) => dispatch(setError(error)));
+  };
+};
 

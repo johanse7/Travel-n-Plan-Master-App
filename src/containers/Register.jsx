@@ -1,56 +1,63 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { registerUser } from '../actions/index';
 import '../assets/styles/components/Register.scss';
 
-class Register extends Component {
-    constructor() {
-        super();
-        this.state = {
-            name: '',
-            lastName: '',
-            phone: '',
-            mail: '',
-            password: ''
-        };
+const Register = (props) => {
+  const { registerUser } = props;
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
+  const [form, setForm] = useState({});
+  const handleChange = (ev) => {
+    setForm({
+      ...form,
+      [ev.target.name]: ev.target.value,
+    });
+  };
 
-    handleChange(ev) {
-        this.setState({
-            [ev.target.name]: ev.target.value
-        });
-    }
+  const handleClick = (ev) => {
+    registerUser(form, '/login');
+  };
 
-    handleClick(ev) {
-        console.log(this.state);
-    }
+  return (
+    <section className="register">
+      <section className="register__container">
+        <h2>Regístrate</h2>
+        <form className="register__container--form">
+          <input
+            className="input"
+            placeholder="Nombre"
+            name='name'
+            onChange={handleChange}
+          />
+          <input
+            className="input"
+            placeholder="Mail"
+            name='email'
+            onChange={handleChange}
+            type="mail"
+          />
+          <input
+            className="input"
+            placeholder="Password"
+            name='password'
+            onChange={handleChange}
+            type="password"
+          />
+          <button
+            className="main-button"
+            type='button'
+            onClick={handleClick}
+          >
+            Registrarme
+          </button>
+        </form>
+      </section>
+    </section>
+  );
+};
 
-    render() {
-        return (
-            <section className="register">
-                <section className="register__container">
-                    <h2>Regístrate</h2>
-                    <form className="register__container--form">
-                        <input className="input"  value={this.state.name} placeholder="Nombre" name='name' 
-                               className="input"       onChange={this.handleChange} />
-                        <input className="input" value={this.state.lastName} placeholder="Apellidos" name='lastName'
-                               className="input"      onChange={this.handleChange} />
-                        <input className="input" value={this.state.phone} placeholder="Celular" name='phone' type="tel"
-                               className="input"      onChange={this.handleChange} />
-                        <input className="input" value={this.state.mail} placeholder="Mail" name='mail'
-                               className="input"      onChange={this.handleChange} type="mail" />
-                        <input className="input" value={this.state.password} placeholder="Password" name='password'
-                                       onChange={this.handleChange} type="password" />
-                        <button className="main-button" type='button' onClick={this.handleClick}>
-                            Registrarme
-                        </button>
-                    </form>
+const mapDispatchToProps = {
+  registerUser,
+};
 
-                </section>
-            </section>
-        );
-    }
-}
-
-export default Register;
+export default connect(null, mapDispatchToProps)(Register);

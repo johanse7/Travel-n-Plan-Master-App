@@ -27,7 +27,7 @@ const Header = (props) => {
   const handleClickLogoutUser = () => {
     debugger
     logoutRequest({});
-    props.history.push('/');
+    props.history.push('/login');
   };
   useEffect(() => {
     if (headerState.showPopoverAccount) {
@@ -60,16 +60,21 @@ const Header = (props) => {
               <FaAngleDown />
             </div>
           </div>
-          {headerState.showPopoverAccount &&
-            <UserAccountPopover ref={wrapperPopoverRef} handleClickLogoutUser={handleClickLogoutUser} />}
+          {headerState.showPopoverAccount && (
+            <UserAccountPopover
+              ref={wrapperPopoverRef}
+              {...user}
+              handleClickLogoutUser={handleClickLogoutUser}
+            />
+          )}
         </div>
       ) : (
-        <div className='header-login'>
-          <Link to='/login'>
-            Iniciar sesión
+          <div className='header-login'>
+            <Link to='/login'>
+              Iniciar sesión
           </Link>
-        </div>
-      )}
+          </div>
+        )}
 
     </header>
   );

@@ -11,6 +11,7 @@ const BuyAirplane = props => {
   const { id } = props.match.params;
 
   useEffect(() => {
+    debugger
     props.getRouteSelected(id);
   }, []);
 
