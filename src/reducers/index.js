@@ -69,6 +69,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+        pending: false,
       };
     case 'REGISTER_BUY_REQUEST':
       return {

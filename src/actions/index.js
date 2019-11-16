@@ -61,6 +61,7 @@ export const asyncGetAirlineFlights = () => {
 
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
+    dispatch(setPendingFetch());
     fetch(`${URL_BACKEND}auth/sign-up`, {
       method: 'POST',
       headers: {
@@ -82,6 +83,7 @@ export const loginUser = ({ email, password }, redirectUrl) => {
     dispatch(setPendingFetch());
     fetch(`${URL_BACKEND}auth/sign-in`, {
       method: 'POST',
+      credentials: 'include',
       headers: new Headers({
         'Authorization': `Basic ${btoa(`${email}:${password}`)}`,
       }),
@@ -99,24 +101,13 @@ export const loginUser = ({ email, password }, redirectUrl) => {
 
 export const registerBuy = (payload) => {
   return (dispatch) => {
-    debugger
-
-    // axios({
-    //   url: `${URL_BACKEND}user-arirlineFligth`,
-    //   withCredentials: true,
-    //   method: "post",
-    //   data: payload
-    // }).then((data) => (dispatch(registerBuyRequest(data))))
-    //   .catch((error) => dispatch(setError(error)));
-
-
     fetch(`${URL_BACKEND}user-arirlineFligth`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json;charset=UTF-8',
       },
-      credentials: 'same-origin',
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify(payload),
     }).then((response) => response.json())
       .then((data) => (dispatch(registerBuyRequest(data))))

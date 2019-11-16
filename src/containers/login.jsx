@@ -84,8 +84,7 @@ const Login = (props) => {
         </section>
       </section>
       {pending &&
-        <LoadSpinner />
-      }
+        <LoadSpinner />}
 
     </section>
   );
@@ -94,7 +93,7 @@ const Login = (props) => {
 const mapStateToProps = ({ pending, error }) => (
   {
     pending,
-    error
+    error,
   });
 
 const mapDispatchToProps = {

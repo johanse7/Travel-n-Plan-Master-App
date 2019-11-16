@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import LoadSpinner from '../components/LoadSpinner';
 import { registerUser } from '../actions/index';
 import '../assets/styles/components/Register.scss';
 
 const Register = (props) => {
-  const { registerUser } = props;
+  const { registerUser, pending } = props;
 
   const [form, setForm] = useState({});
   const handleChange = (ev) => {
@@ -52,12 +53,18 @@ const Register = (props) => {
           </button>
         </form>
       </section>
+      {pending && <LoadSpinner />}
     </section>
   );
 };
+
+const mapStateToProps = ({ pending }) => (
+  {
+    pending,
+  });
 
 const mapDispatchToProps = {
   registerUser,
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

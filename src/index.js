@@ -6,25 +6,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/index';
 import TravelApp from './routes/TravelApp';
 
-const intialState = {
-  "user": {
+const composeEnhancers = (typeof window !== 'undefined' && window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_) || compose;
 
-  },
-  "airRouteSelected": {
-
-  },
-  "buyAirRoute": {
-    
-  },
-  "airLineFilgths":  [],
-};
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
 const store = createStore(reducer,
-  compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : f => f));
+  compose(applyMiddleware(thunk), composeEnhancers()));
 
 ReactDOM.render(
   <Provider store={store}>
-    <TravelApp isLogged={intialState.user.id} />
+    <TravelApp />
   </Provider>,
   document.getElementById('TravelMasterApp'),
 );
