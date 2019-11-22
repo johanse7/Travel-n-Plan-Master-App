@@ -10,7 +10,7 @@ import { loginUser } from '../actions/index';
 import '../assets/styles/components/Login.scss';
 
 const Login = (props) => {
-  const { loginUser, pending, error } = props;
+  const { loginUser, pending, errorLogin } = props;
   const [form, setValues] = useState({
     user: '',
     password: '',
@@ -78,7 +78,7 @@ const Login = (props) => {
                 Regístrate
               </Link>
             </p>
-            {error &&
+            {errorLogin &&
               <AlertMessage message="Credenciales invalidas" classTypeAlert="warning" />}
           </form>
         </section>
@@ -90,10 +90,10 @@ const Login = (props) => {
   );
 };
 
-const mapStateToProps = ({ pending, error }) => (
+const mapStateToProps = ({ pending, errorLogin }) => (
   {
     pending,
-    error,
+    errorLogin,
   });
 
 const mapDispatchToProps = {

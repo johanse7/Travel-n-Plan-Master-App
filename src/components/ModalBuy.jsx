@@ -1,11 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ModalContainer from './ModalContainer';
+import { showModalSuccessBuy } from '../actions/index';
 import '../assets/styles/components/ModalBuy.scss';
 
 const ModalBuy = (props) => {
-  const { origin, destination, history } = props;
+  const { origin, destination, history, showModalSuccessBuy } = props;
   const handleClickRedirect = () => {
+    showModalSuccessBuy(false);
     history.push('/userFligth');
   };
   return (
@@ -19,7 +22,7 @@ const ModalBuy = (props) => {
           </p>
         </div>
         <div className="modal-footer">
-          <button className="main-button" onClick={ handleClickRedirect }>
+          <button className="main-button" onClick={handleClickRedirect}>
             Mis Vuelos
           </button>
         </div>
@@ -28,4 +31,8 @@ const ModalBuy = (props) => {
   );
 };
 
-export default withRouter(ModalBuy);
+const mapDispatchToProps = {
+  showModalSuccessBuy,
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(ModalBuy));

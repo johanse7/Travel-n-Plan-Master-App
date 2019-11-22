@@ -29,8 +29,8 @@ const reducer = (state = initialState, action) => {
     case 'GET_ROUTE_SELECTED':
       return {
         ...state,
-        airRouteSelected: !state.airLineFilgths ? {} :
-          state.airLineFilgths.find((item) => item._id === action.payload) || {},
+        pending: false,
+        airRouteSelected: action.payload,
       };
     case 'SET_BUY_ADD_PASSANGGER':
       return {
@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
         pending: false,
-        error: null
+        errorLogin: null,
       };
     case 'LOGOUT_REQUEST':
       return {
@@ -75,14 +75,32 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        openModalBuy: true,
         userRegisterBuy: action.payload,
+        buyAirRoute: {},
       };
     case 'SET_ERROR_RESPONSE':
       return {
         ...state,
         error: action.error,
         pending: false,
+      };
+    case 'SET_ERROR_LOGIN':
+      return {
+        ...state,
+        errorLogin: action.error,
+        pending: false,
+      };
+    case 'SHOW-MODAL-SUCCES-BUY':
+      return {
+        ...state,
+        openModalBuy: action.payload,
+      };
+    case 'GET-AIRLINE-FLIGTHS-USER':
+      debugger
+      return {
+        ...state,
+        pending: false,
+        airLineFilgthsUser: action.payload || [],
       };
     default:
       return state;

@@ -1,10 +1,15 @@
 import history from '../helpers/history';
 
-const URL = 'https://travelmasterplan-api.now.sh';
-const URL_BACKEND = 'http://localhost:8000/';
+const URL_API = 'http://localhost:3000';
+const URL_BACKEND = 'http://localhost:8000';
 
 export const setError = (error) => ({
   type: 'SET_ERROR_RESPONSE',
+  error,
+});
+
+export const setErrorLogin = (error) => ({
+  type: 'SET_ERROR_LOGIN',
   error,
 });
 
@@ -49,10 +54,20 @@ export const setPendingFetch = () => ({
   type: 'PENDING_AIRLINE_FLIGHT',
 });
 
+export const showModalSuccessBuy = (payload) => ({
+  type: 'SHOW-MODAL-SUCCES-BUY',
+  payload,
+});
+
+export const getAirlineFligthUsers = (payload) => ({
+  type: 'GET-AIRLINE-FLIGTHS-USER',
+  payload,
+});
+
 export const asyncGetAirlineFlights = () => {
   return (dispatch) => {
     dispatch(setPendingFetch());
-    return fetch(`${URL}/api/airlineFlight`)
+    return fetch(`${URL_API}/api/airlineFlight`)
       .then((response) => response.json())
       .then((dataAirlineFlights) => dispatch({ type: 'GET_AIRLINE_FLIGHTS', payload: dataAirlineFlights.data }))
       .catch((error) => dispatch({ type: 'EROR_GET_AIRLINE_FLIGHTS', msg: error }));
@@ -62,7 +77,7 @@ export const asyncGetAirlineFlights = () => {
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
     dispatch(setPendingFetch());
-    fetch(`${URL_BACKEND}auth/sign-up`, {
+    fetch(`${URL_BACKEND}/auth/sign-up`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -81,7 +96,7 @@ export const registerUser = (payload, redirectUrl) => {
 export const loginUser = ({ email, password }, redirectUrl) => {
   return (dispatch) => {
     dispatch(setPendingFetch());
-    fetch(`${URL_BACKEND}auth/sign-in`, {
+    fetch(`${URL_BACKEND}/auth/sign-in`, {
       method: 'POST',
       credentials: 'include',
       headers: new Headers({
@@ -95,13 +110,14 @@ export const loginUser = ({ email, password }, redirectUrl) => {
       .then(() => {
         history.push(redirectUrl);
       })
-      .catch((error) => dispatch(setError(error)));
+      .catch((error) => dispatch(setErrorLogin(error)));
   };
 };
 
 export const registerBuy = (payload) => {
   return (dispatch) => {
-    fetch(`${URL_BACKEND}user-arirlineFligth`, {
+    dispatch(setPendingFetch());
+    fetch(`${URL_BACKEND}/user-arirlineFligth`, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json;charset=UTF-8',
@@ -110,7 +126,40 @@ export const registerBuy = (payload) => {
       credentials: 'include',
       body: JSON.stringify(payload),
     }).then((response) => response.json())
-      .then((data) => (dispatch(registerBuyRequest(data))))
+      .then((data) => {
+        dispatch(registerBuyRequest(data));
+        dispatch(showModalSuccessBuy(true));
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const getRouteById = (payload) => {
+  return (dispatch) => {
+    dispatch(setPendingFetch());
+    fetch(`${URL_API}/api/airlineFlight/${payload}`)
+      .then((response) => response.json())
+      .then(({ data }) => {
+        dispatch(getRouteSelected(data));
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const getAirlineFligthsByUser = (payload) => {
+  return (dispatch) => {
+    debugger
+    dispatch(setPendingFetch());
+    fetch(`${URL_BACKEND}/user-arirlineFligth/?userId=${payload}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+      },
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then(({ data }) => dispatch(getAirlineFligthUsers(data)))
       .catch((error) => dispatch(setError(error)));
   };
 };

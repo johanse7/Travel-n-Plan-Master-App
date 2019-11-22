@@ -16,6 +16,7 @@ const Register = (props) => {
   };
 
   const handleClick = (ev) => {
+    ev.preventDefault();
     registerUser(form, '/login');
   };
 
@@ -23,12 +24,13 @@ const Register = (props) => {
     <section className="register">
       <section className="register__container">
         <h2>Regístrate</h2>
-        <form className="register__container--form">
+        <form className="register__container--form" onSubmit={handleClick}>
           <input
             className="input"
             placeholder="Nombre"
             name='name'
             onChange={handleChange}
+            required
           />
           <input
             className="input"
@@ -36,6 +38,7 @@ const Register = (props) => {
             name='email'
             onChange={handleChange}
             type="mail"
+            required
           />
           <input
             className="input"
@@ -43,11 +46,12 @@ const Register = (props) => {
             name='password'
             onChange={handleChange}
             type="password"
+            required
           />
           <button
             className="main-button"
-            type='button'
-            onClick={handleClick}
+            type='submit'
+
           >
             Registrarme
           </button>

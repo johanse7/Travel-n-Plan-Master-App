@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import ModalBuy from './ModalBuy';
-import LoadSpinner from '../components/LoadSpinner';
 import smallAirPlane from '../assets/static/small-black-plane.png';
 import { registerBuy } from '../actions/index';
 import '../assets/styles/components/SummaryBuy.scss';
 
 const SummaryBuy = (props) => {
 
-  const { buyAirRoute, airRouteSelected, user, registerBuy, openModalBuy } = props;
+  const { buyAirRoute,
+    airRouteSelected,
+    user, registerBuy,
+    openModalBuy,
+  } = props;
   const { fligthScale } = buyAirRoute;
   const hasMoreThanOne = buyAirRoute.totalPassenger > 1;
   const hasUser = Object.keys(user).length > 0;
@@ -27,6 +30,9 @@ const SummaryBuy = (props) => {
       category: fligthScale.category.name,
       totalPassenger: buyAirRoute.totalPassenger,
       totalPrice: calcTotalPrice(),
+      startHour: airRouteSelected.startHour,
+      endHour: airRouteSelected.endHour,
+      duration: fligthScale.duration,
     };
     registerBuy(userAirlineFligth);
   };
@@ -81,7 +87,6 @@ const SummaryBuy = (props) => {
       {openModalBuy &&
         <ModalBuy {...airRouteSelected} />}
 
-    {/* <LoadSpinner />  */}
     </section>
   );
 };
@@ -90,7 +95,6 @@ const mapSatateToProps = (state) => {
     buyAirRoute: state.buyAirRoute,
     airRouteSelected: state.airRouteSelected,
     user: state.user,
-    pending: state.pending,
     openModalBuy: state.openModalBuy,
   };
 };

@@ -4,12 +4,23 @@ import { IoIosTimer } from "react-icons/io";
 import '../assets/styles/components/Fligth.scss';
 
 const Fligth = (props) => {
+  const {
+    origin,
+    destination,
+    category,
+    totalPassenger,
+    totalPrice,
+    startHour,
+    endHour,
+    duration,
+  } = props;
+
   return (
     <div className="fligth-container">
       <div className="fligth-header">
         <div className="fligth-info">
-          <p>Los Angeles</p>
-          <p>LAX</p>
+          <p>{origin.cityName}</p>
+          <p>{origin.code}</p>
         </div>
         <div className="fligth-icon-plane">
           <FaEllipsisH />
@@ -17,41 +28,41 @@ const Fligth = (props) => {
           <FaEllipsisH />
         </div>
         <div className="fligth-info">
-          <p>San francisco</p>
-          <p>SFO</p>
+          <p>{destination.cityName}</p>
+          <p>{destination.code}</p>
         </div>
       </div>
       <div className="fligth-body">
         <div className="fligth-body-time">
-          <span>9:30 am</span>
-          <span>10:30 am</span>
+          <span>{startHour}</span>
+          <span>{endHour}</span>
         </div>
         <div className="fligth-body-info">
           <div className="fligth-body-info-detail">
             <IoIosTimer />
             <span>
-              9h20m
+              {duration}
             </span>
           </div>
           <div className="fligth-body-info-detail">
             <FaTicketAlt />
             <span>
-              Clase ecomica
+              {category}
             </span>
           </div>
           <div className="fligth-body-info-detail">
             <FaUserCheck />
             <span>
-             Numero de pasajeros: 5
+              {`Numero de pasajeros: ${totalPassenger}`}
             </span>
           </div>
           <div className="fligth-body-info-detail">
             <FaDollarSign />
             <span>
-             COP 150000
+              {`COP ${totalPrice}`}
             </span>
           </div>
-          
+
         </div>
       </div>
     </div>
