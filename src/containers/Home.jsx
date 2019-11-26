@@ -1,13 +1,22 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import queryString from 'query-string';
 import AirplaneRoutes from '../components/AirplaneRoutes';
-import { asyncGetAirlineFlights } from '../actions/index';
+import { asyncGetAirlineFlights, loginRequest } from '../actions/index';
 import LoadSpinner from '../components/LoadSpinner';
 import '../assets/styles/TravelApp.scss';
 
-const Home = ({ airRoutes, pending, error, asyncGetAirlineFlights }) => {
+const Home = (props) => {
+  const { airRoutes, pending, asyncGetAirlineFlights, loginRequest } = props;
+
   useEffect(() => {
     asyncGetAirlineFlights();
+
+    const user = queryString.parse(props.location.search);
+    debugger
+    if (user.id) {
+      loginRequest(user);
+    }
   }, []);
   return (
     <>
@@ -16,15 +25,15 @@ const Home = ({ airRoutes, pending, error, asyncGetAirlineFlights }) => {
     </>
   );
 };
-const mapSatateToProps = ({ airLineFilgths, pending, error }) => {
+const mapSatateToProps = ({ airLineFilgths, pending }) => {
   return {
     airRoutes: airLineFilgths,
-    pending: pending,
-    error: error,
+    pending,
   };
 };
 const mapDispatchToProps = {
   asyncGetAirlineFlights,
+  loginRequest,
 };
 
 export default connect(mapSatateToProps, mapDispatchToProps)(Home);

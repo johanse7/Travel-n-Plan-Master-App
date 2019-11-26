@@ -1,5 +1,17 @@
 @import "../Vars.scss";
 
+.menu {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
 .popover-content {
   position: absolute;
   transform: translate(0, 10px);
@@ -7,13 +19,14 @@
   padding: 1.5rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   width: 300px;
-  right: 0;
+  right: 5px;
   top: 0;
-  margin-top: 55px;
-  z-index: 10;
+  margin-top: 90px;
+  // z-index: 10;
   transform: translate(0, -10px);
   border-radius: 10px;
 }
+
 .popover-content:before {
   position: absolute;
   z-index: -1;
@@ -70,19 +83,18 @@
         vertical-align: middle;
         margin-right: 15px;
       }
-      & span{
+      & span {
         vertical-align: middle;
       }
 
       & a {
         margin: 0;
       }
-    
     }
   }
 }
 
-.menu-content-options ul > li:hover{
+.menu-content-options ul > li:hover {
   cursor: pointer;
   background-color: #696969;
 }

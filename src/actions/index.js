@@ -1,7 +1,10 @@
 import history from '../helpers/history';
-//https://travelmasterplan-api.now.sh/
+//
 const URL_API = 'http://localhost:3000';
 const URL_BACKEND = 'http://localhost:8000';
+
+// const URL_API = 'https://travelmasterplan-api.now.sh';
+// const URL_BACKEND = 'https://travelmasterplan-server-side-render.now.sh';
 
 export const setError = (error) => ({
   type: 'SET_ERROR_RESPONSE',
@@ -28,10 +31,13 @@ export const setBuyFligthScale = (payload) => ({
   payload,
 });
 
-export const loginRequest = (payload) => ({
-  type: 'LOGIN_REQUEST',
-  payload,
-});
+export const loginRequest = (payload) => {
+  localStorage.setItem('user', JSON.stringify(payload));
+  return {
+    type: 'LOGIN_REQUEST',
+    payload,
+  };
+};
 
 export const logoutRequest = (payload) => {
   localStorage.removeItem('user');
@@ -104,7 +110,6 @@ export const loginUser = ({ email, password }, redirectUrl) => {
       }),
     }).then((response) => response.json())
       .then(({ user }) => {
-        localStorage.setItem('user', JSON.stringify(user));
         dispatch(loginRequest(user));
       })
       .then(() => {

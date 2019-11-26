@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FaFacebookF } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import LoadSpinner from '../components/LoadSpinner';
 import AlertMessage from '../components/AlertMessage';
-import googleIcon from '../assets/static/Google.png';
-import twitterIcon from '../assets/static/twitter.png';
-import facebookIcon from '../assets/static/Facebook.png';
 import { loginUser } from '../actions/index';
 import '../assets/styles/components/Login.scss';
 
@@ -28,22 +27,28 @@ const Login = (props) => {
     loginUser(form, '/');
   };
 
+  const handleClickRedirectLogin = (url) => {
+    window.location.href = url;
+  };
+
   return (
     <section className='login'>
       <section className='login-container'>
         <h2>Iniciar sessión</h2>
         <section className='container-social-network '>
-          <div className='contend-login-google'>
-            <img src={googleIcon} alt='Google' />
+          <div
+            className='content-login-google'
+            onClick={() => handleClickRedirectLogin('http://localhost:8000/auth/google-oauth')}
+          >
+            <FaGoogle />
             <span> Inicia sesión con Google</span>
           </div>
-          <div className='contend-login-facebook '>
-            <img src={facebookIcon} alt='Facebook' />
+          <div
+            className='content-login-facebook'
+            onClick={() => handleClickRedirectLogin('http://localhost:8000/auth/facebook')}
+          >
+            <FaFacebookF />
             <span>Inicia sesión con Facebook</span>
-          </div>
-          <div className='contend-login-twitter'>
-            <img src={twitterIcon} alt='Twitter' />
-            <span>Inicia sesión con Twitter</span>
           </div>
         </section>
         <section>

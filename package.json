@@ -18,7 +18,7 @@
     "nodejs"
   ],
   "author": "Team travel plan master",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -27,6 +27,7 @@
     "babel-loader": "^8.0.6",
     "dotenv": "^8.2.0",
     "history": "^4.10.1",
+    "query-string": "^6.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",
@@ -56,5 +57,5 @@
   "bugs": {
     "url": "https://github.com/johanse7/Travel-n-Plan-Master-App/issues"
   },
-  "homepage": "https://github.com/johanse7/Travel-n-Plan-Master-App#readme"
+  "homepage": "https://travelmasterplan.000webhostapp.com/"
 }

@@ -15,8 +15,8 @@ const Header = (props) => {
 
   const handleClickShowPopover = (e) => {
     // && !e.target.closest('li')
-    if (wrapperPopoverRef.current && (wrapperPopoverRef.current.contains(e.target)
-    )) {
+    debugger
+    if (wrapperPopoverRef.current && (wrapperPopoverRef.current.contains(e.target))) {
       return;
     }
     headerSetState({
@@ -25,9 +25,14 @@ const Header = (props) => {
   };
 
   const handleClickLogoutUser = () => {
-    debugger
     logoutRequest({});
     props.history.push('/login');
+  };
+  const handleClickRedirect = (url) => {
+    props.history.push(url);
+    headerSetState({
+      showPopoverAccount: false,
+    });
   };
   useEffect(() => {
     if (headerState.showPopoverAccount) {
@@ -65,6 +70,7 @@ const Header = (props) => {
               ref={wrapperPopoverRef}
               {...user}
               handleClickLogoutUser={handleClickLogoutUser}
+              handleClickRedirect={handleClickRedirect}
             />
           )}
         </div>

@@ -9,8 +9,8 @@ import '../assets/styles/components/BuyAirplane.scss';
 
 const BuyAirplane = (props) => {
 
-  const { getRouteById, airRouteSelected } = props;
-  const { id } = props.match.params;
+  const { getRouteById, airRouteSelected, match } = props;
+  const { id } = match.params;
 
   useEffect(() => {
     getRouteById(id);
